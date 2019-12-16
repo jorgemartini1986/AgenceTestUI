@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://jorgemartini1986.FreeASPHost.net/api'
+  baseUrl: 'https://agencetestapi.azurewebsites.net/api'
 };
 
 /*
