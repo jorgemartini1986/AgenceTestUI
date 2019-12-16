@@ -1,0 +1,19 @@
+<div [ngStyle]="{'height': containerHeight}">
+<div  style="position: absolute; margin: 0px 40px; ">
+  <ngx-charts-bar-vertical-2d
+  [results]="resolveData()[0]"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showGridLines]="showGridLines"
+  [rotateXAxisTicks]="false"
+  [barPadding]="2"
+  [legendPosition]="legendPosition"
+  [legendTitle]="legendTitle"
+  >
+  </ngx-charts-bar-vertical-2d>
+</div>
+</div>
+
+

@@ -1,0 +1,16 @@
+<mat-toolbar color="warn" >
+  <button mat-button (click)="onClickTwo()" >Agence</button>
+  <button mat-button  (click)="onClickTwo()">Projetos</button>
+  <button mat-button  (click)="onClickTwo()">Administrativo</button>
+  <button mat-button [matMenuTriggerFor]="menu">Comercial</button>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item (click)="onClick()">Performace Comercial</a>
+  </mat-menu>
+  <button mat-button  (click)="onClickTwo()">Financeiro</button>
+  <button mat-button  (click)="onClickTwo()">Usuario</button>
+  <button mat-button  (click)="onClickTwo()">Salir</button>
+</mat-toolbar>
+<app-dashboard *ngIf="loadingTable"></app-dashboard>
+<div style="text-align: center" *ngIf="!loadingTable">
+  <img src="/assets/images/logo2.png"  style="width: 500px;z-index: -1;"/>
+</div>

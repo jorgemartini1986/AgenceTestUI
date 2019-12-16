@@ -1,0 +1,48 @@
+<div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill fxLayoutGap="16px" fxLayoutGap.gt-sm="24px">
+  <mat-card fxFlex>
+    <mat-card-title>
+      <mat-card fxFlex>
+        <mat-form-field style="width: 100%;font-size: 16px">
+          <mat-label >Selecionar Consultores</mat-label>
+          <mat-select   multiple  [(value)]="selectedConsultants"  (selectionChange)="onSelectionChange()">
+            <mat-option  *ngFor="let consultant of consultants" [value]="consultant">{{consultant.noUsuario}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+    </mat-card-title>
+    <mat-card-content class="dashboard-card-content">
+      <mat-label  style="font-size: 16px" >Selecione Período</mat-label>
+      <mat-card >
+        <mat-form-field>
+          <mat-label  style="font-size: 18px" >Iniciar</mat-label>
+          <input matInput name="fromDatePicker" [matDatepicker]="pickerFrom" placeholder="Iniciar" [max]="dateTo" [value]="dateFrom" (dateChange)="onDateFromChanged($event)">
+          <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFrom></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label  style="font-size: 18px" >Final</mat-label>
+          <input matInput [matDatepicker]="pickerTo" placeholder="Final" [min]="dateFrom" [value]="dateTo" (dateChange)="onDateToChanged($event)">
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+        <mat-tab-group>
+          <mat-tab label="Entrada Detalhada">
+            <div class="tab-content">
+              <mat-progress-bar mode="indeterminate" *ngIf="loadingIncomings"></mat-progress-bar>
+              <app-consultant-info *ngFor="let consultantIncoming of consultantIncomings" [consultant]="consultantIncoming">
+              </app-consultant-info>
+            </div>
+          </mat-tab>
+          <mat-tab label="Desempenho por Consultor">
+            <!--<div class="tab-content">-->
+              <app-bar-chart [consultants]="consultantIncomings"></app-bar-chart>
+            <!--</div>-->
+          </mat-tab>
+          <mat-tab label="Participação no Receita Líquida">
+            <app-pie-chart [consultants]="consultantIncomings"></app-pie-chart>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>
